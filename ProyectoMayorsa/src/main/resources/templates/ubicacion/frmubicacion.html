@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<script th:src="@{/js/web/ubicacion/frmubicacion.js}" type="text/javascript"></script>
+	<nav th:insert="layout::menu"></nav>
+	<button type="button" id="btnagregar" class="btn btn-primary">Agregar Ubicación</button>
+	<hr />
+	<table class="table" id="tblubicacion">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Direccion</th>
+				<th scope="col">Ciudad</th>
+				<th scope="col">Pais</th>
+				<th scope="col">Actualizar</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="ubicacion :${listaubicaciones}">
+				<td th:text="${ubicacion.idubicacion}"></td>
+				<td th:text="${ubicacion.nombreubicacion}"></td>
+				<td th:text="${ubicacion.direccionubicacion}"></td>
+				<td th:text="${ubicacion.ciudadubicacion}"></td>
+				<td th:text="${ubicacion.paisubicacion}"></td>
+				<td>
+					<button type="button" class="btn btn-success btnactualizar"
+						th:data-idubicacion="${ubicacion.idubicacion}"
+						th:data-nombreubicacion="${ubicacion.nombreubicacion}"
+						th:data-direccionubicacion="${ubicacion.direccionubicacion}"
+						th:data-ciudadubicacion="${ubicacion.ciudadubicacion}"
+						th:data-paisubicacion="${ubicacion.paisubicacion}">
+						<i class="fas fa-pen"></i>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger btneliminarubicacion"
+						th:data-idubicacion="${ubicacion.idubicacion}"
+						th:data-nombreubicacion="${ubicacion.nombreubicacion}">
+						<i class="fas fa-trash"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Modal Registro / actualizacion UBICACION -->
+	<div class="modal fade" id="modalUbicacion" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal Mantenimiento de Ubicacion</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="txtidubicacion" class="form-label">ID</label> 
+						<input type="text" class="form-control" id="txtidubicacion" >
+					</div>
+					<div class="mb-3">
+						<label for="txtnombre" class="form-label">Nombre</label> 
+						<input type="text" class="form-control" id="txtnombre" >
+					</div>
+					<div class="mb-3">
+						<label for="txtdireccion" class="form-label">Direccion</label> 
+						<input type="text" class="form-control" id="txtdireccion" >
+					</div>
+					<div class="mb-3">
+						<label for="txtciudad" class="form-label">Ciudad</label> 
+						<input type="text" class="form-control" id="txtciudad" >
+					</div>
+					<div class="mb-3">
+						<label for="txtpais" class="form-label">Pais</label> 
+						<input type="text" class="form-control" id="txtpais" >
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary"
+						id="btnguardar">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Modal Eliminar UBICACION -->
+	<div class="modal fade" id="modalEliminarUbicacion" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal Eliminar Ubicacion</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">		
+					<label id="mensajeeliminar"></label>
+					<input type="hidden" id="hddideliminarubicacion" value="0">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary" id="btneliminar">Eliminar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+package com.pe.cibertec.mayorsa.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.pe.cibertec.mayorsa.modelo.bd.Ubicacion;
+
+@Repository
+public interface UbicacionRepository extends JpaRepository<Ubicacion, Integer>{
+
+}
