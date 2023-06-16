@@ -1,5 +1,5 @@
 $(document).on("click", "#btnagregar", function() {
-	$("#txtidubicacion").val("");
+	$("#txtidubicacion").val("").prop("readonly", false);
     $("#txtnombre").val("");
     $("#txtdireccion").val("");
     $("#txtciudad").val("");
@@ -8,7 +8,8 @@ $(document).on("click", "#btnagregar", function() {
 });
 
 $(document).on("click", ".btnactualizar", function(){
-    $("#txtidubicacion").val($(this).attr("data-idubicacion"));
+    var idUbicacion = $(this).attr("data-idubicacion");
+    $("#txtidubicacion").val(idUbicacion).prop("readonly", true);
     $("#txtnombre").val($(this).attr("data-nombreubicacion"));
     $("#txtdireccion").val($(this).attr("data-direccionubicacion"));
     $("#txtciudad").val($(this).attr("data-ciudadubicacion"));

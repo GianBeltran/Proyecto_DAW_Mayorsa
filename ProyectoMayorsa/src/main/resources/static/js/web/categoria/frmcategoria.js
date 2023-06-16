@@ -1,12 +1,13 @@
 $(document).on("click", "#btnagregar", function() {
-	$("#txtidcatego").val("");
+	$("#txtidcatego").val("").prop("readonly", false);
     $("#txtnombre").val("");
     $("#txtdescripcion").val("");
     $("#modalCategoria").modal("show");
 });
 
 $(document).on("click", ".btnactualizar", function(){
-    $("#txtidcatego").val($(this).attr("data-idcatego"));
+    var idCategoria = $(this).attr("data-idcatego");
+    $("#txtidcatego").val(idCategoria).prop("readonly", true);
     $("#txtnombre").val($(this).attr("data-nombrecatego"));
     $("#txtdescripcion").val($(this).attr("data-descripcioncatego"));
     $("#modalCategoria").modal("show");

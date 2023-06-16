@@ -1,5 +1,5 @@
 $(document).on("click", "#btnagregar", function() {
-	$("#txtidprov").val("");
+	$("#txtidprov").val("").prop("readonly", false);
     $("#txtnombreprov").val("");
     $("#txtdireccionprov").val("");
     $("#txttelefonoprov").val("");
@@ -8,7 +8,8 @@ $(document).on("click", "#btnagregar", function() {
 });
 
 $(document).on("click", ".btnactualizar", function(){
-    $("#txtidprov").val($(this).attr("data-idprov"));
+    var idProveedor = $(this).attr("data-idprov");
+    $("#txtidprov").val(idProveedor).prop("readonly", true);
     $("#txtnombreprov").val($(this).attr("data-nombreprov"));
     $("#txtdireccionprov").val($(this).attr("data-direccionprov"));
     $("#txttelefonoprov").val($(this).attr("data-telefonoprov"));
