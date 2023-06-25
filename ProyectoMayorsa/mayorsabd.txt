@@ -1,0 +1,93 @@
+CREATE DATABASE mayorsabd;
+USE mayorsabd;
+
+CREATE TABLE tb_proveedor (
+    idProv INT PRIMARY KEY,
+    nombreProv VARCHAR(30),
+    direccionProv VARCHAR(30),
+    telefonoProv VARCHAR(30),
+    correoProv VARCHAR(30)
+);
+
+
+CREATE TABLE tb_categoria (
+    idCatego INT PRIMARY KEY,
+    nombreCatego VARCHAR(30),
+    descripcionCatego VARCHAR(30)
+);
+
+
+CREATE TABLE tb_producto (
+    idProduc INT PRIMARY KEY,
+    nombreProduc VARCHAR(30),
+    descripcionProduc VARCHAR(30),
+    precioProduc DECIMAL,
+    stockProduc INT,
+    idProv INT,
+    idCatego INT,
+    FOREIGN KEY (idProv) REFERENCES tb_proveedor(idProv),
+    FOREIGN KEY (idCatego) REFERENCES tb_categoria(idCatego)
+);
+
+
+
+CREATE TABLE tb_cliente (
+    idCliente INT PRIMARY KEY,
+    nombreCliente VARCHAR(30),
+    direccionCliente VARCHAR(30),
+    telefonoCliente VARCHAR(30),
+    correoCliente VARCHAR(30)
+);
+
+
+CREATE TABLE tb_ubicacion (
+    idUbicacion INT PRIMARY KEY,
+    nombreUbicacion VARCHAR(30),
+    direccionUbicacion VARCHAR(30),
+    ciudadUbicacion VARCHAR(30),
+    paisUbicacion VARCHAR(30)
+);
+
+
+
+-- Registros para la tabla tb_proveedor
+INSERT INTO tb_proveedor (idProv, nombreProv, direccionProv, telefonoProv, correoProv)
+VALUES (1, 'John Doe Electronics', '123 Main Street', '555-1234', 'johndoe@example.com'),
+       (2, 'Smith & Co. Clothing', '456 Oak Avenue', '555-5678', 'smithco@example.com'),
+       (3, 'Johnson Home Supplies', '789 Elm Street', '555-9012', 'johnsonhomes@example.com'),
+       (4, 'Wilson Sports Equipment', '321 Pine Road', '555-3456', 'wilsonsports@example.com'),
+       (5, 'Gourmet Food Emporium', '987 Walnut Boulevard', '555-7890', 'gourmetfood@example.com');
+
+-- Registros para la tabla tb_cliente
+INSERT INTO tb_cliente (idCliente, nombreCliente, direccionCliente, telefonoCliente, correoCliente)
+VALUES (1, 'Alice Smith', '123 Main Street', '555-1111', 'alice@example.com'),
+       (2, 'Bob Johnson', '456 Oak Avenue', '555-2222', 'bob@example.com'),
+       (3, 'Charlie Davis', '789 Elm Street', '555-3333', 'charlie@example.com'),
+       (4, 'Eva Wilson', '321 Pine Road', '555-4444', 'eva@example.com'),
+       (5, 'Frank Thompson', '987 Walnut Boulevard', '555-5555', 'frank@example.com');
+
+-- Registros para la tabla tb_categoria
+INSERT INTO tb_categoria (idCatego, nombreCatego, descripcionCatego)
+VALUES (1, 'Electrónica', 'Productos electrónicos'),
+       (2, 'Ropa', 'Prendas de vestir'),
+       (3, 'Hogar', 'Artículos para el hogar'),
+       (4, 'Deportes', 'Artículos deportivos'),
+       (5, 'Alimentación', 'Productos alimenticios');
+
+
+-- Registros para la tabla tb_ubicacion
+INSERT INTO tb_ubicacion (idUbicacion, nombreUbicacion, direccionUbicacion, ciudadUbicacion, paisUbicacion)
+VALUES (1, 'Tienda Lima Centro', 'Av. Abancay 123', 'Lima', 'Perú'),
+       (2, 'Almacén Arequipa Norte', 'Jr. Melgar 456', 'Arequipa', 'Perú'),
+       (3, 'Sucursal Cusco', 'Av. El Sol 789', 'Cusco', 'Perú'),
+       (4, 'Oficina Trujillo', 'Av. España 321', 'Trujillo', 'Perú'),
+       (5, 'Punto de Venta Piura', 'Av. Grau 987', 'Piura', 'Perú');
+
+
+-- Registros para la tabla tb_producto
+INSERT INTO tb_producto (idProduc, nombreProduc, descripcionProduc, precioProduc, stockProduc, idProv, idCatego)
+VALUES (1, 'Smartphone X', 'Teléfono inteligente', 999.99, 50, 1, 1),
+       (2, 'Camiseta Y', 'Camiseta de algodón', 29.99, 100, 2, 2),
+       (3, 'Set de ollas Z', 'Juego de ollas antiadherentes', 149.99, 20, 3, 3),
+       (4, 'Raqueta de tenis', 'Raqueta profesional para tenis', 199.99, 10, 4, 4);
+
