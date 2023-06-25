@@ -48,7 +48,25 @@ CREATE TABLE tb_ubicacion (
     paisUbicacion VARCHAR(30)
 );
 
+CREATE TABLE usuario(
+	idusuario int primary key,
+	nomusuario varchar(30),
+	email varchar(50),
+	password varchar(30),
+	nombres varchar(30),
+	apellidos varchar(30)
+);
 
+CREATE TABLE rol(
+	idrol int primary key,
+	nomrol varchar(30)
+);
+
+
+-- Registros para la tabla usuario
+
+insert into usuario (idusuario,nomusuario,email,password,nombres,apellidos)
+values (1,'ramirez','ramirez@gmail.com','ramirez','ramirez','ramirez');
 
 -- Registros para la tabla tb_proveedor
 INSERT INTO tb_proveedor (idProv, nombreProv, direccionProv, telefonoProv, correoProv)
